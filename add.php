@@ -33,7 +33,7 @@
   // }else{
   //   echo "err";
   // }
-  $sql = $con->query("INSERT INTO Products (product_name,price,star,description,assort)VALUES ('第一个商品',1.99,1.5,'第一个商品，学习angular时创建','电子商品|硬件设备')");
+  $sql = $con->query("INSERT INTO Products (product_name,price,star,description,assort)VALUES ('第二个商品','2.99','2.5','第二个商品，啥快递你拉开始发的那','电子商品')");
   if($sql){
      echo "susseful";
   }else{
