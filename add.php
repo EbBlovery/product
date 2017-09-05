@@ -19,19 +19,25 @@
   //    echo 'error' . $con->error;
   // }
 
-  $sql = "CREATE TABLE Products (
-     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-     product_name VARCHAR(15) NOT NULL,
-     price DECIMAL(10,2) NOT NULL,
-     star DECIMAL(2,1) NOT NULL,
-     description VARCHAR(50),
-     assort VARCHAR(50) NOT NULL,
-     crate_date TIMESTAMP
-  )";
-  if($con->query($sql) === true){
-    echo "susseful";
+  // $sql = "CREATE TABLE Products (
+  //    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+  //    product_name VARCHAR(15) NOT NULL,
+  //    price DECIMAL(10,2) NOT NULL,
+  //    star DECIMAL(2,1) NOT NULL,
+  //    description VARCHAR(50),
+  //    assort VARCHAR(50) NOT NULL,
+  //    crate_date TIMESTAMP
+  // ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+  // if($con->query($sql) === true){
+  //   echo "susseful";
+  // }else{
+  //   echo "err";
+  // }
+  $sql = $con->query("INSERT INTO Products (product_name,price,star,description,assort)VALUES ('第一个商品',1.99,1.5,'第一个商品，学习angular时创建','电子商品|硬件设备')");
+  if($sql){
+     echo "susseful";
   }else{
-    echo "err";
+    echo "err".$con->error;
   }
   
 ?>
