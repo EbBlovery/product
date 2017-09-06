@@ -18,4 +18,14 @@
   if(!$con){
      die('连接失败'.$con->connect_error);
   }
+  function parse_url_param($str)  
+  {  
+      $data = array();  
+      $parameter = explode('&',$str);
+      foreach ($parameter as $val) {  
+          $tmp = explode('=', $val);  
+          $data[$tmp[0]] = $tmp[1];  
+      }  
+      return $data;  
+  }
 ?>
