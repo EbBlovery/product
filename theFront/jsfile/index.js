@@ -7,27 +7,49 @@ $(function(){
 	 // })
     var R = new Router();
     R.init();
-    var res = document.querySelector('#showinfo');
+    // var res = document.querySelector('#showinfo');
     R.route('/',function(){
-    	res.innerHTML = 'SAFASFDASKDFNLASFVNMAK';
+    	$('#showinfo').html(`<p>SAFASFDASKDFNLASFVNMAK</p>`)
     })
     R.route('/admin',function(){
-    	res.innerHTML = 'SAFASFDASKDFNL社范德萨的发生大幅ASFVNMAK';
+    	$('#showinfo').html(`<p>asdal;ff,a;a;gvmsld;vmkl;m;;skd;ms;lmm;lsmegsgm;某个时刻联盟商</p>`)
     })
     R.route('/product',function(){
     	// res.innerHTML = 'SAFASasfafafsafdafFDASKDFNLASFVNMAK';
     	$.get('http://localhost/php-demo/product/product_list.php',function(data){
             var data = JSON.parse(data);
             for(let item in data){
-            	$('#showinfo').append(
+            	$('#showinfo table').append(
                  `
-                 <ul>
-                    <li>${data[item].id}</li>
-                 </ul>
-
+				   <tbody>
+				     <tr>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				       <th>表格标题</th>
+				       <th>表格标题</th>
+				       <td>表格单元格</td>
+				     </tr>
+				     <tr>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				       <th>表格标题</th>
+				       <th>表格标题</th>
+				       <td>表格单元格</td>
+				     </tr>
+				     <tr>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				     </tr>
+				     <tr>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				       <td>表格单元格</td>
+				     </tr>
+				   </tbody>
+	              </table>
                  `
                  )
-            	data[item];
             }
     	})
     })
