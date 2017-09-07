@@ -3,12 +3,20 @@
 
   $username = $_POST['username'];
   $password = $_POST['password'];
+  $data = array();
   $result = $con -> get_row("SELECT * FROM Users WHERE username='$username'");  
   if(!isset($result)){
       echo '用户名或密码错误';
   }else{
      if($result->password === md5($password)){
-        print_r(json_encode($result));
+        // print_r(json_encode($result));
+       $data['code'] = 0;
+       $arr = range(0,9);
+       shuffle($arr);
+       $ran = md5($username . $password . $arr[0]);
+       $sql = $con->query("UPDATE Usertoken SET token = '$ran' WHERE id = 1");
+       $data['token'] = $ran;
+       print_r(json_encode($data));
      }else{
         echo "密码错误";
      }
