@@ -3,6 +3,8 @@
 
   $username = $_POST['username'];
   $password = $_POST['password'];
+
+
   $data = array();
   $result = $con -> get_row("SELECT * FROM Users WHERE username='$username'");  
   if(!isset($result)){
@@ -16,6 +18,11 @@
        $ran = md5($username . $password . $arr[0]);
        $sql = $con->query("UPDATE Usertoken SET token = '$ran' WHERE id = 1");
        $data['token'] = $ran;
+       $data['username'] = $result->username;
+       header('content-type:application:json;charset=utf-8');
+       header('Access-Control-Allow-Origin:*');
+       header('Access-Control-Allow-Methods:POST,OPTIONS');
+       header('Access-Control-Allow-Headers:origin,x-requested-with,content-type');
        print_r(json_encode($data));
      }else{
         echo "密码错误";
