@@ -22,7 +22,6 @@
    	   if($sql){
            $data['code']=0;
            print_r(json_encode($data));
-           echo '注册成功';
    	   }else{
    	   	   echo 'Error'.$con->error;
    	   }
