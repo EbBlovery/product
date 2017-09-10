@@ -1,6 +1,10 @@
 <?php
     include '../dbcon.php';
 
+    header('content-type:application:json;charset=utf-8');
+    header('Access-Control-Allow-Origin:*');
+    header('Access-Control-Allow-Methods:POST,OPTIONS');
+    header('Access-Control-Allow-Headers:origin,x-requested-with,content-type');
     // echo $_SERVER['QUERY_STRING'];
     $star = $_POST['star'];
     $id = $_POST['id'];

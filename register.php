@@ -1,17 +1,27 @@
 <?php
    include 'dbcon.php';
+   
+   header('content-type:application:json;charset=utf-8');
+   header('Access-Control-Allow-Origin:*');
+   header('Access-Control-Allow-Methods:POST,OPTIONS');
+   header('Access-Control-Allow-Headers:origin,x-requested-with,content-type');
 
    $username = $_POST['username'];
    $password = md5($_POST['password']);
    $pconfig = md5($_POST['pconfig']);
    $result = $con -> get_row("SELECT * FROM Users WHERE username='$username'");
+
    if(isset($result)){
-       echo "用户名已被注册";
+       $data['code']=2;
+       print_r(json_encode($data));
    }else if($password !== $pconfig){
-       echo "请输入一致的密码";
+       $data['code']=1;
+       print_r(json_encode($data));
    }else{
    	   $sql = $con->query("INSERT INTO users (username,password)VALUES ('$username','$password')");
    	   if($sql){
+           $data['code']=0;
+           print_r(json_encode($data));
            echo '注册成功';
    	   }else{
    	   	   echo 'Error'.$con->error;
